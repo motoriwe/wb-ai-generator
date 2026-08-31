@@ -1,9 +1,6 @@
 import { stripe } from "@/lib/stripe";
 import { getSupabaseAdmin } from "@/lib/supabase";
 
-// Важно: Stripe должен получать сырое тело запроса для проверки подписи
-export const config = { api: { bodyParser: false } };
-
 export async function POST(req) {
   const body = await req.text();
   const signature = req.headers.get("stripe-signature");
